@@ -3,6 +3,7 @@
 
 int main(void) {
   // feladat 1.
+  // osszeadja a szam szamjegyeit
   printf("Enter a number: ");
   int inputNumber1, output1 = 0;
   scanf("%d", &inputNumber1);
@@ -16,6 +17,38 @@ int main(void) {
 
     }
   printf("The sum of the numbers is %d\n", output1);
+
+  // feladat 2.
+  // tomb elso kozepso utolso szamai kozul a legkissebbet
+  // csak paratlan elemu tombre mukodik
+  int inputNumber2;
+  // printf("Enter an odd number (array elements): ");
+  // scanf("%d", &inputNumber2);
+  bool check = 1;
+  while (check)
+    {
+      if (inputNumber2 % 2 != 0)
+        {
+          check = 0; // breaks out of the loop on the next execution
+        }
+      else
+        {
+          printf("Enter an odd number (array elements): ");
+          scanf("%d", &inputNumber2);
+        }
+    }
+  float* array2;
+  allocateMemoryForFloatArray2(inputNumber2, &array2);
+  fillWithRandomFloats (inputNumber2, array2, 0, 1);
+  printFloatArray(inputNumber2, array2, "output2.txt");
+  // printFloatArray(inputNumber2, array2, "CON");
+  float output2 = 0;
+  output2 = min(array2[0], array2[(inputNumber2/2) + 1], array2[inputNumber2 - 1]);
+
+  // freopen("CON", "w", stdout);
+  printf("%f\n", output2);
+  printf("The minimum number is %f\n", output2);
+  deallocateMemoryForFloatArray(&array2);
 
     return 0;
 }

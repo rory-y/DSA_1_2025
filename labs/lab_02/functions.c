@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 
 int
@@ -10,23 +11,15 @@ sum (int input1, int input2)
   return input1 + input2;
 }
 
-int
-min (int input1, int input2, int input3)
+float
+min (float input1, float input2, float input3)
 {
-  if (input1 < input2 && input1 < input3)
-    {
-      return input1;
-    }
-  else if (input2 < input1 && input2 < input3)
-    {
-      return input2;
-    }
-  else if (input3 < input1 && input3 < input2)
-    {
-      return input3;
-    }
-  else
-    return input1;
+    float min = input1;
+    if(input2 < min)
+      min = input2;
+    if(input3 < min)
+      min = input3;
+    return min;
 }
 
 
@@ -42,6 +35,7 @@ allocateMemoryForArray (int n)
   return p;
 }
 
+
 void
 allocateMemoryForArray2 (int n, int **dpArray)
 {
@@ -54,9 +48,20 @@ allocateMemoryForArray2 (int n, int **dpArray)
 }
 
 void
+allocateMemoryForFloatArray2 (int n, float **dpArray)
+{
+  *dpArray = (float*)malloc(n*sizeof(float));
+  if (!(*dpArray))
+    {
+      printf("Memory allocation error");
+      exit(-1);
+    }
+}
+
+void
 readArray(int* pn, int** dpArray, const char* input)
 {
-  if (!freopen(input, "r",stdin))
+  if (!freopen(input, "r", stdin))
     {
       exit(-2);
     }
@@ -67,24 +72,61 @@ readArray(int* pn, int** dpArray, const char* input)
       scanf("%i", &((*dpArray)[i]));
       //scanf("%i",*dpArray+i);
     }
-  freopen("CON", "r",stdin);
+  freopen("CON", "r", stdin);
 }
 
 void
 printArray(int n, int* pArray, const char* output)
 {
-  freopen(output, "w",stdout);
+  freopen(output, "w", stdout);
   for (int i = 0; i < n; i++)
     {
-      printf("%i ", pArray[i]);
+      printf("%d ", pArray[i]);
       //printf("%i ",*(pArray+i));
     }
   printf("\n");
-  freopen("CON", "w",stdout);
+  freopen("CON", "w", stdout);
 }
 
-void deallocateMemoryForArray(int** dpArray)
+void
+printFloatArray(int n, float* pArray, const char* output)
+{
+  freopen(output, "w",stdout);
+  for (int i = 0; i < n; i++)
+    {
+      printf("%f ", pArray[i]);
+    }
+  printf("\n");
+  freopen("CON", "w", stdout);
+}
+
+void deallocateMemoryForIntArray(int** dpArray)
 {
   free(*dpArray);
   *dpArray = NULL;
+}
+
+void deallocateMemoryForFloatArray(float** dpArray)
+{
+  free(*dpArray);
+  *dpArray = NULL;
+}
+
+float
+randomFloat(float min, float max)
+{
+  //srand((unsigned int)time(NULL));
+  float scale = rand() / (float) RAND_MAX; // [0, 1.0]
+  return min + scale * ( max - min );      // [min, max]
+}
+
+
+void
+fillWithRandomFloats(int n, float *pArray, float min, float max)
+{
+  srand(time(NULL));
+  for(int i = 0; i < n; i++)
+    {
+      pArray[i] = randomFloat(min, max);
+    }
 }
