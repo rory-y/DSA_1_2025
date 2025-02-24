@@ -5,7 +5,7 @@ int main(void) {
   printf("meow :3\n");
   int n, *array;
   readArray(&n, &array, "input.txt");
-  printArray (n, array, "CON");
+  printArray (n, array, "output.txt");
 
 
     return 0;
