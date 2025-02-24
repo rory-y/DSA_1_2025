@@ -2,8 +2,6 @@
 // Created by rory on 2/17/25.
 //
 
-
-
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
@@ -38,5 +36,14 @@ int* allocateMemoryForArray(int n);
  * @param dpArray double pointer
  */
 void allocateMemoryForArray2(int n, int** dpArray);
+
+
+void readArray(int* pn, int** dpArray, const char* input);
+
+
+void printArray(int n, int *pArray, const char *output);
+
+
+void deallocateMemoryForArray(int **dpArray);
 
 #endif //FUNCTIONS_H

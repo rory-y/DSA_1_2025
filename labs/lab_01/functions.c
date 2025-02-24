@@ -51,5 +51,40 @@ allocateMemoryForArray2 (int n, int **dpArray)
       printf("Memory allocation error");
       exit(-1);
     }
+}
 
+void
+readArray(int* pn, int** dpArray, const char* input)
+{
+  if (!freopen(input, "r",stdin))
+    {
+      exit(-2);
+    }
+  scanf("%i", pn);
+  allocateMemoryForArray2(*pn, dpArray);
+  for (int i = 0; i < *pn; i++)
+    {
+      scanf("%i", &((*dpArray)[i]));
+      //scanf("%i",*dpArray+i);
+    }
+  freopen("CON", "r",stdin);
+}
+
+void
+printArray(int n, int* pArray, const char* output)
+{
+  freopen(output, "w",stdout);
+  for (int i = 0; i < n; i++)
+    {
+      printf("%i ", pArray[i]);
+      //printf("%i ",*(pArray+i));
+    }
+  printf("\n");
+  freopen("CON", "w",stdout);
+}
+
+void deallocateMemoryForArray(int** dpArray)
+{
+  free(*dpArray);
+  *dpArray = NULL;
 }
