@@ -2,6 +2,8 @@
 #include <fcntl.h>
 #include "functions.h"
 
+#include <stdlib.h>
+
 
 int main(void)
 {
@@ -51,6 +53,24 @@ int main(void)
   printf("The minimum number is %f\n", output2);
 
   deallocateMemoryForFloatArray(&array2);
+
+  // feladat 3.
+  // Mátrix adott oszlopából a legkisebb
+  int rows, cols;
+  FILE * file3 = fopen("matrix.txt", "r");
+  if (file3 == NULL)
+    {
+      perror("Error opening file");
+      exit(1);
+    }
+  fscanf(file3, "%d %d", &rows, &cols);
+  char** tpArray;
+  allocateMemoryFor2DCharArray2 (rows, cols, &tpArray);
+  read2DCharArray (&rows, &cols, &tpArray, "matrix.txt");
+  print2DCharArray (rows, cols, tpArray);
+
+  fclose (file3);
+  deallocateMemoryFor2DCharArray (rows, &tpArray);
 
     return 0;
 }

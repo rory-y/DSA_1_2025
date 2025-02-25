@@ -43,8 +43,41 @@ void allocateMemoryForArray2(int n, int** dpArray);
  */
 void allocateMemoryForFloatArray2 (int n, float **dpArray);
 
+/**
+ *
+ * @param row number of rows
+ * @param col number of columns
+ * @param dpArray triple array pointer (***tpArray)
+ */
+void allocateMemoryFor2DCharArray2 (int row, int col, char ***dpArray);
+
+/**
+ * 
+ * @param rows number of rows
+ * @param tpArray triple array pointer (***tpArray)
+ */
+void deallocateMemoryFor2DCharArray (int rows, char*** tpArray);
+
 
 void readArray(int* pn, int** dpArray, const char* input);
+
+
+/**
+ * populates a 2D char array from a file
+ * @param rows number of rows in the matrix
+ * @param cols number of cols in the matrix
+ * @param tpArray triple array pointer (ex. ***tpArray)
+ * @param input input filname (ex. "input.txt")
+ */
+void read2DCharArray (int* rows, int* cols, char*** tpArray, const char* input);
+
+/**
+ * prints a char matrix to the console
+ * @param rows number of rows in the matrix
+ * @param cols number of cols in the matrix
+ * @param dpArray double array pointer (ex. **tpArray)
+ */
+void print2DCharArray (int rows, int cols, char** dpArray);
 
 
 void printArray(int n, int *pArray, const char *output);
