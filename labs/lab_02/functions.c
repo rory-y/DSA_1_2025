@@ -78,26 +78,50 @@ readArray(int* pn, int** dpArray, const char* input)
 void
 printArray(int n, int* pArray, const char* output)
 {
-  freopen(output, "w", stdout);
+  FILE *pfile = fopen(output, "w");
+  if (!pfile)
+    {
+      printf("Error in opening file");
+      exit(-1);
+    }
   for (int i = 0; i < n; i++)
     {
-      printf("%d ", pArray[i]);
-      //printf("%i ",*(pArray+i));
+      fprintf(pfile, "%d\n", pArray[i]);
     }
-  printf("\n");
-  freopen("CON", "w", stdout);
+  fprintf(pfile, "\n");
+  fclose(pfile);
+//  freopen(output, "w", stdout);
+//  for (int i = 0; i < n; i++)
+//    {
+//      printf("%d ", pArray[i]);
+//      //printf("%i ",*(pArray+i));
+//    }
+//  printf("\n");
+//  freopen("CON", "w", stdout);
 }
 
 void
 printFloatArray(int n, float* pArray, const char* output)
 {
-  freopen(output, "w",stdout);
+  FILE *pfile = fopen(output, "w");
+  if (!pfile)
+    {
+      printf("Error in opening file");
+      exit(-1);
+    }
   for (int i = 0; i < n; i++)
     {
-      printf("%f ", pArray[i]);
+      fprintf(pfile, "%f ", pArray[i]);
     }
-  printf("\n");
-  freopen("CON", "w", stdout);
+  fprintf(pfile, "\n");
+  fclose(pfile);
+//  freopen(output, "w",stdout);
+//  for (int i = 0; i < n; i++)
+//    {
+//      printf("%f ", pArray[i]);
+//    }
+//  printf("\n");
+//  freopen("CON", "w", stdout);
 }
 
 void deallocateMemoryForIntArray(int** dpArray)

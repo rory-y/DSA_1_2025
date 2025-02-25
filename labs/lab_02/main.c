@@ -1,7 +1,10 @@
 #include <stdio.h>
+#include <fcntl.h>
 #include "functions.h"
 
-int main(void) {
+
+int main(void)
+{
   // feladat 1.
   // osszeadja a szam szamjegyeit
   printf("Enter a number: ");
@@ -41,13 +44,12 @@ int main(void) {
   allocateMemoryForFloatArray2(inputNumber2, &array2);
   fillWithRandomFloats (inputNumber2, array2, 0, 1);
   printFloatArray(inputNumber2, array2, "output2.txt");
-  // printFloatArray(inputNumber2, array2, "CON");
+
   float output2 = 0;
   output2 = min(array2[0], array2[(inputNumber2/2) + 1], array2[inputNumber2 - 1]);
-
-  // freopen("CON", "w", stdout);
   printf("%f\n", output2);
   printf("The minimum number is %f\n", output2);
+
   deallocateMemoryForFloatArray(&array2);
 
     return 0;
