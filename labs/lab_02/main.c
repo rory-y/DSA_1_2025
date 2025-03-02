@@ -7,7 +7,7 @@
 
 int main(void)
 {
-/*
+
   // feladat 1.
   // osszeadja a szam szamjegyeit
   printf("Enter a number: ");
@@ -54,7 +54,7 @@ int main(void)
   printf("The minimum number is %f\n", output2);
 
   deallocateMemoryForFloatArray(&array2);
-*/
+
   // feladat 3.
   // Mátrix adott oszlopából a legkisebb
   int rows, cols;
@@ -71,9 +71,13 @@ int main(void)
   read2DCharArray (&rows, &cols, tpArray, "matrix.txt");
   print2DCharArray (rows, cols, tpArray);
 
+  int colIndex;
+  printf("Enter a column to check! ");
+  scanf("%d", &colIndex);
+  printf("The smallest value in %d is: %c\n", colIndex, minimumValueOfColumn(rows, colIndex, tpArray));
+
   fclose (file3);
   deallocateMemoryFor2DCharArray (rows, tpArray);
-
 
     return 0;
 }

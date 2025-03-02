@@ -117,9 +117,9 @@ float randomFloat(float min, float max);
 /**
  * 
  * @param rows number of rows
- * @param columnIndex 
- * @param pMatrix 
- * @return 
+ * @param columnIndex the column you want to check (starting from 1)
+ * @param pMatrix matrix pointer (eg. **dpArray)
+ * @return returns the smallest character from the given column
  */
 char minimumValueOfColumn(int rows, int columnIndex, char **pMatrix);
 

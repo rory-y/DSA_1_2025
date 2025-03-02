@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <limits.h>
 
 
 int
@@ -226,4 +227,17 @@ fillWithRandomFloats(int n, float *pArray, float min, float max)
     {
       pArray[i] = randomFloat(min, max);
     }
+}
+
+
+char minimumValueOfColumn(int rows, int columnIndex, char **pMatrix)
+{
+  int minimum = INT_MAX;
+  columnIndex--; // so you can start the numbering from 1
+  for(int i = 0; i < rows; i++)
+    {
+      if(pMatrix[i][columnIndex] < minimum)
+        minimum = pMatrix[i][columnIndex];
+    }
+  return minimum;
 }
