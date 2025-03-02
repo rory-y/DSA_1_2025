@@ -7,6 +7,7 @@
 
 int main(void)
 {
+/*
   // feladat 1.
   // osszeadja a szam szamjegyeit
   printf("Enter a number: ");
@@ -49,11 +50,11 @@ int main(void)
 
   float output2 = 0;
   output2 = min(array2[0], array2[(inputNumber2/2) + 1], array2[inputNumber2 - 1]);
-  printf("%f\n", output2);
+  // printf("%f\n", output2);
   printf("The minimum number is %f\n", output2);
 
   deallocateMemoryForFloatArray(&array2);
-
+*/
   // feladat 3.
   // Mátrix adott oszlopából a legkisebb
   int rows, cols;
@@ -64,13 +65,15 @@ int main(void)
       exit(1);
     }
   fscanf(file3, "%d %d", &rows, &cols);
+
   char** tpArray;
   allocateMemoryFor2DCharArray2 (rows, cols, &tpArray);
-  read2DCharArray (&rows, &cols, &tpArray, "matrix.txt");
-  print2DCharArray (rows, cols, tpArray);
+  //read2DCharArray (&rows, &cols, &tpArray, "matrix.txt");
+  //print2DCharArray (rows, cols, tpArray);
 
   fclose (file3);
-  deallocateMemoryFor2DCharArray (rows, &tpArray);
+  deallocateMemoryFor2DCharArray (rows, tpArray);
+
 
     return 0;
 }

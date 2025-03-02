@@ -53,19 +53,28 @@ allocateMemoryFor2DCharArray2(int row, int col, char ***dpArray)
   *dpArray = (char**) malloc (row * sizeof(char*));
   if (!(*dpArray))
     {
-      printf("Memory allocation error");
+      printf("Memory allocation error 1");
       exit(-1);
     }
   for (int i = 0; i < row; i++)
     {
-      *dpArray[i] = (char*)malloc (col * sizeof(char));
+      (*dpArray)[i] = (char*)malloc (col * sizeof(char));
+      if(!((*dpArray)[i]))
+        {
+          printf("Memory allocation error 2");
+          exit(-1);
+        }
     }
-
 }
 
 void
-deallocateMemoryFor2DCharArray(int rows, char ***tpArray)
+deallocateMemoryFor2DCharArray(int rows, char **tpArray)
 {
+  if (tpArray == NULL)
+    {
+      return;
+    }
+
   for (int i = 0; i < rows; i++)
     {
       free(tpArray[i]);
@@ -112,11 +121,14 @@ read2DCharArray (int* pRows, int *pCols, char*** tpArray, const char* input)
       exit(-1);
     }
 
+//  char trash[4];
+//  fgets(trash, 4, pfile);
+  while(fgetc(pfile) != '\n');
   for (int i = 0; i < *pRows; i++)
     {
       for (int j = 0; j < *pCols; j++)
         {
-          fscanf(pfile, "%c", &((*tpArray)[i][j]));
+          fscanf(pfile, "%c", (tpArray[i][j]));
         }
     }
 
@@ -124,13 +136,13 @@ read2DCharArray (int* pRows, int *pCols, char*** tpArray, const char* input)
 }
 
 void
-print2DCharArray(int rows, int cols, char** dpArray)
+print2DCharArray(int rows, int cols, char*** dpArray)
 {
   for (int i = 0; i < rows; i++)
     {
       for (int j = 0; j < cols; j++)
         {
-          printf("%4c", dpArray[i][j]);
+          printf("%4c", *dpArray[i][j]);
         }
     }
 }

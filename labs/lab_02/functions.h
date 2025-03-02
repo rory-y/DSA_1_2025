@@ -56,7 +56,7 @@ void allocateMemoryFor2DCharArray2 (int row, int col, char ***dpArray);
  * @param rows number of rows
  * @param tpArray triple array pointer (***tpArray)
  */
-void deallocateMemoryFor2DCharArray (int rows, char*** tpArray);
+void deallocateMemoryFor2DCharArray (int rows, char** tpArray);
 
 
 void readArray(int* pn, int** dpArray, const char* input);
@@ -77,7 +77,7 @@ void read2DCharArray (int* rows, int* cols, char*** tpArray, const char* input);
  * @param cols number of cols in the matrix
  * @param dpArray double array pointer (ex. **tpArray)
  */
-void print2DCharArray (int rows, int cols, char** dpArray);
+void print2DCharArray (int rows, int cols, char*** dpArray);
 
 
 void printArray(int n, int *pArray, const char *output);
