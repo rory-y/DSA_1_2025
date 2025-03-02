@@ -68,8 +68,8 @@ int main(void)
 
   char** tpArray;
   allocateMemoryFor2DCharArray2 (rows, cols, &tpArray);
-  //read2DCharArray (&rows, &cols, &tpArray, "matrix.txt");
-  //print2DCharArray (rows, cols, tpArray);
+  read2DCharArray (&rows, &cols, tpArray, "matrix.txt");
+  print2DCharArray (rows, cols, tpArray);
 
   fclose (file3);
   deallocateMemoryFor2DCharArray (rows, tpArray);

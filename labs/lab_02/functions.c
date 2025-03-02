@@ -112,7 +112,7 @@ readArray(int* pn, int** dpArray, const char* input)
 }
 
 void
-read2DCharArray (int* pRows, int *pCols, char*** tpArray, const char* input)
+read2DCharArray (int* pRows, int *pCols, char** tpArray, const char* input)
 {
   FILE *pfile = fopen(input, "r");
   if (!pfile)
@@ -123,12 +123,12 @@ read2DCharArray (int* pRows, int *pCols, char*** tpArray, const char* input)
 
 //  char trash[4];
 //  fgets(trash, 4, pfile);
-  while(fgetc(pfile) != '\n');
+  while(fgetc(pfile) != '\n'); // skips the first line of the input file
   for (int i = 0; i < *pRows; i++)
     {
       for (int j = 0; j < *pCols; j++)
         {
-          fscanf(pfile, "%c", (tpArray[i][j]));
+          fscanf(pfile, " %c", &tpArray[i][j]);
         }
     }
 
@@ -136,14 +136,15 @@ read2DCharArray (int* pRows, int *pCols, char*** tpArray, const char* input)
 }
 
 void
-print2DCharArray(int rows, int cols, char*** dpArray)
+print2DCharArray(int rows, int cols, char** dpArray)
 {
   for (int i = 0; i < rows; i++)
     {
       for (int j = 0; j < cols; j++)
         {
-          printf("%4c", *dpArray[i][j]);
+          printf("%4c", dpArray[i][j]);
         }
+      printf("\n");
     }
 }
 

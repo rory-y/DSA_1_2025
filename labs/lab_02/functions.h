@@ -69,7 +69,7 @@ void readArray(int* pn, int** dpArray, const char* input);
  * @param tpArray triple array pointer (ex. ***tpArray)
  * @param input input filname (ex. "input.txt")
  */
-void read2DCharArray (int* rows, int* cols, char*** tpArray, const char* input);
+void read2DCharArray (int* rows, int* cols, char** tpArray, const char* input);
 
 /**
  * prints a char matrix to the console
@@ -77,7 +77,7 @@ void read2DCharArray (int* rows, int* cols, char*** tpArray, const char* input);
  * @param cols number of cols in the matrix
  * @param dpArray double array pointer (ex. **tpArray)
  */
-void print2DCharArray (int rows, int cols, char*** dpArray);
+void print2DCharArray (int rows, int cols, char** dpArray);
 
 
 void printArray(int n, int *pArray, const char *output);
@@ -113,5 +113,14 @@ void fillWithRandomFloats(int n, float *pArray, float min, float max);
  * @return - a random floating point number from [min, max]
  */
 float randomFloat(float min, float max);
+
+/**
+ * 
+ * @param rows number of rows
+ * @param columnIndex 
+ * @param pMatrix 
+ * @return 
+ */
+char minimumValueOfColumn(int rows, int columnIndex, char **pMatrix);
 
 #endif //FUNCTIONS_H
