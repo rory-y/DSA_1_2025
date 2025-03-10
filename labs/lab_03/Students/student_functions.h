@@ -19,7 +19,7 @@ typedef struct
 typedef struct
 {
   char name[51];
-  char neptunCode[6];
+  char neptunCode[7]; // this has to be 1 more than the actual max character length, so 7 instead of 6
   char birthPlace[51];
   Date_t dateOfBirth;
   GENDER gender;
