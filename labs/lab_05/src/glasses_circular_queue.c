@@ -1,9 +1,5 @@
 #include "glasses_circular_queue.h"
 
-#include <limits.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <stdio.h>
 
 void createQueue(const int capacity, CircularQueue_t *queue) {
     queue->capacity = capacity;
@@ -63,6 +59,27 @@ char *getDescriptionType(const enum Type type) {
 void printOneGlass(GLASS glass) {
   printf("%s %.2f %s\n",glass.color,glass.volume,getDescriptionType(glass.type));
 }
+
+void
+displayRedGlasses (const CircularQueue_t queue)
+{
+    if (isEmpty(queue)) {
+        printf("Queue is empty!\n");
+        return;
+    }
+    int i = queue.front;
+    while (true) {
+        // printf("%d ", queue.glasses[i]);
+        if (strcmp(queue.glasses[i].color, "red") == 0)
+          {
+            printOneGlass(queue.glasses[i]);
+          }
+        if (i == queue.rear) break;
+        i = (i + 1) % queue.capacity;
+    }
+    printf("\n");
+}
+
 void display(const CircularQueue_t queue) {
     if (isEmpty(queue)) {
         printf("Queue is empty!\n");

@@ -1,6 +1,10 @@
 //
 // Created by rory on 3/31/25.
 //
+#ifndef MAIN.H
+#define MAIN.H
+#include "main.h"
+#endif
 
 #ifndef GLASSES_CIRCULAR_QUEUE_H
 #define GLASSES_CIRCULAR_QUEUE_H
@@ -14,6 +18,7 @@ typedef struct
   enum Type type;
 }GLASS;
 
+// use this instead of `null` when dequeueing
 static const GLASS glass0 = {"",0,0};
 
 typedef struct {
@@ -68,4 +73,6 @@ GLASS peek(CircularQueue_t queue);
 void readOneGlass(GLASS *glass);
 char *getDescriptionType(enum Type type);
 void printOneGlass(GLASS glass);
+
+void displayRedGlasses(CircularQueue_t queue);
 #endif //GLASSES_CIRCULAR_QUEUE_H

@@ -14,6 +14,7 @@ main (void)
   display(glasses);
   dequeue (&glasses);
   display(glasses);
-
+  printf("red glasses:\n");
+    displayRedGlasses (glasses);
     return 0;
 }
