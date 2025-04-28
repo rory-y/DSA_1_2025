@@ -1,0 +1,80 @@
+Spaghetti Carbonara
+250
+0
+0
+Penne Arrabbiata
+200
+1
+1
+Fusilli al Pesto
+300
+2
+0
+Tagliatelle Alfredo
+280
+3
+1
+Mac and Cheese
+220
+4
+0
+Tomato Basil Penne
+210
+1
+1
+Fusilli Funghi
+230
+2
+1
+Tagliatelle Bolognese
+260
+3
+0
+Spaghetti Aglio e Olio
+240
+0
+1
+Penne Gorgonzola
+250
+1
+0
+Fusilli Primavera
+270
+2
+1
+Spaghetti Pomodoro
+260
+0
+0
+Tagliatelle Spinaci
+220
+3
+1
+Macaroni Broccoli
+210
+4
+0
+Pasta al Limone
+200
+5
+1
+Cheesy Penne
+230
+1
+0
+Spaghetti Marinara
+240
+0
+1
+Macaroni Carbonara
+250
+4
+1
+Fusilli Diavola
+270
+2
+0
+Pasta Vegetale
+210
+5
+1
