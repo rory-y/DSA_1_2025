@@ -11,8 +11,8 @@ TreapNode *createNode(int key) {
   }
   newNode->key = key;
   newNode->priority = rand() % 1001; // random priority
-  newNode->left = nullptr;
-  newNode->right = nullptr;
+  newNode->left = NULL;
+  newNode->right = NULL;
   return newNode;
 }
 
@@ -41,8 +41,8 @@ TreapNode *rotateLeft(TreapNode *x) {
 // - all nodes with keys > k will be in 'right'
 void split(TreapNode *root, int key, TreapNode **left, TreapNode **right) {
   if (root == NULL) {
-    *left = nullptr;
-    *right = nullptr;
+    *left = NULL;
+    *right = NULL;
     return;
   }
   if (key < root->key) {
@@ -116,7 +116,7 @@ TreapNode *search(TreapNode *root, int key) {
 TreapNode *erase(TreapNode *root, int key) {
   // Base case: If tree is empty
   if (root == NULL)
-    return nullptr;
+    return NULL;
   // Recur to the appropriate subtree
   if (key < root->key) {
     root->left = erase(root->left, key);
@@ -127,7 +127,7 @@ TreapNode *erase(TreapNode *root, int key) {
     // Case 1: Node is a leaf
     if (root->left == NULL && root->right == NULL) {
       free(root);
-      return nullptr;
+      return NULL;
     }
     // Case 2: Node has only one child or Case 3: Node has two children
     // Either way, we can use merge to handle it
@@ -142,7 +142,7 @@ TreapNode *erase(TreapNode *root, int key) {
 
 // build a treap from an array of keys
 TreapNode *build(int arr[], int n) {
-  TreapNode *root = nullptr;
+  TreapNode *root = NULL;
   for (int i = 0; i < n; i++) {
     root = insert(root, arr[i]);
   }
@@ -165,8 +165,8 @@ TreapNode *unionTreap(TreapNode *t1, TreapNode *t2) {
   }
 
   // Split t2 around t1's key
-  TreapNode *left = nullptr;
-  TreapNode *right = nullptr;
+  TreapNode *left = NULL;
+  TreapNode *right = NULL;
   split(t2, t1->key, &left, &right);
 
   // Recursively compute union of corresponding parts
@@ -177,47 +177,41 @@ TreapNode *unionTreap(TreapNode *t1, TreapNode *t2) {
 }
 
 // intersection of two treaps
-TreapNode *intersect(const TreapNode *t1, TreapNode *t2) {
+TreapNode *intersect(const TreapNode *t1, TreapNode *t2)
+{
   if (t1 == NULL || t2 == NULL)
-    return nullptr;
+        return NULL;
 
-  // If key exists in t2, include it in result
-  TreapNode *result = nullptr;
+    // Make a copy of t2 for search
+    TreapNode* searchResult = search(t2, t1->key);
 
-  // Split t2 around t1's key to find if it exists
-  TreapNode *left = nullptr;
-  TreapNode *right = nullptr;
-  TreapNode *equal = nullptr;
+    // Initialize result
+    TreapNode* result = NULL;
 
-  // First split: keys < t1->key go to left, keys >= t1->key go to equal_right
-  TreapNode *equal_right = nullptr;
-  split(t2, t1->key - 1, &left, &equal_right);
+    // If the key exists in both trees
+    if (searchResult != NULL) {
+        // Create a new node with this key for our result
+        result = createNode(t1->key);
+        // Copy the priority to maintain treap properties
+        result->priority = t1->priority;
 
-  // Second split: keys == t1->key go to equal, keys > t1->key go to right
-  split(equal_right, t1->key, &equal, &right);
+        // Recursively find intersection for left and right subtrees
+        result->left = intersect(t1->left, t2);
+        result->right = intersect(t1->right, t2);
+    } else
+      {
+        // The key doesn't exist in t2
+        // Check left and right subtrees separately
+        TreapNode* leftIntersect = intersect(t1->left, t2);
+        TreapNode* rightIntersect = intersect(t1->right, t2);
 
-  // If t1->key exists in t2
-  if (equal != NULL) {
-    // Create a new node for the intersection
-    result = createNode(t1->key);
-
-    // Recursively find intersection of left and right subtrees
-    result->left = intersect(t1->left, left);
-    result->right = intersect(t1->right, right);
-
-    // Clean up
-    free(equal); // We created a new node for the result
-  } else {
-    // Key doesn't exist in t2, just find intersection of subtrees
-    result = merge(intersect(t1->left, left), intersect(t1->right, right));
-  }
-
-  // Merge back the parts of t2 that we split
-  TreapNode *temp = merge(left, equal);
-  t2 = merge(temp, right);
-
+        // Merge the results
+        result = merge(leftIntersect, rightIntersect);
+      }
   return result;
 }
+
+/* PRINTING OUT THE TREAP */
 
 // print the treap in-order (for debugging)
 void inorder(const TreapNode *root) {

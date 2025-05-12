@@ -4,10 +4,10 @@
 // main function to demonstrate the treap
 int main() {
   // Seed the random number generator
-  srand(time(nullptr));
+  srand(time(NULL));
 
   // Create a treap by inserting elements
-  TreapNode *root = nullptr;
+  TreapNode *root = NULL;
 
   printf("--- Insert Operation ---\n");
   root = insert(root, 50);
@@ -23,13 +23,13 @@ int main() {
 
   printf("\n--- Search Operation ---\n");
   TreapNode *found = search(root, 40);
-  if (found != nullptr)
+  if (found != NULL)
     printf("Key 40 found with priority %d\n", found->priority);
   else
     printf("Key 40 not found\n");
 
   found = search(root, 55);
-  if (found != nullptr)
+  if (found != NULL)
     printf("Key 55 found with priority %d\n", found->priority);
   else
     printf("Key 55 not found\n");
@@ -59,7 +59,7 @@ int main() {
   inorder(root2);
 
   // we need to recreate root since it was modified in the union operation
-  root = nullptr;
+  root = NULL;
   root = insert(root, 50);
   root = insert(root, 30);
   root = insert(root, 70);
