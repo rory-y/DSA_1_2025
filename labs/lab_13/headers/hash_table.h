@@ -6,6 +6,8 @@
 
 #define CAPACITY 31
 
+static int numberOfCollisions = 0;
+
 typedef struct
 {
   int key;

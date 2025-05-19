@@ -34,6 +34,7 @@ main ()
       printf ("The key is not present in the hash table\n");
     }
 
+  printf ("Number of collisions: %d", numberOfCollisions);
   destroyHashArray (&table);
   return 0;
 }
