@@ -3,4 +3,8 @@ project(lab_13 C)
 
 set(CMAKE_C_STANDARD 23)
 
-add_executable(lab_13 main.c)
+add_executable(lab_13 main.c
+               headers/constants.h
+               headers/hash_table.h
+               sources/hash_table.c
+               )
