@@ -3,4 +3,7 @@ project(lab_14 C)
 
 set(CMAKE_C_STANDARD 23)
 
-add_executable(lab_14 main.c)
+add_executable(lab_14 main.c
+                headers/heapSort.h
+                headers/main.h
+                sources/heapSort.c)
