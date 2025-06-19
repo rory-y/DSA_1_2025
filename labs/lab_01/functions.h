@@ -28,22 +28,19 @@ int min(int input1, int input2, int input3);
  * @param n a tomb elemeinek szama
  * @return a tomb altal lefoglalt memoria cimet
  */
-int* allocateMemoryForArray(int n);
+int *allocateMemoryForArray(int n);
 
 /**
  * n elemu tombnek foglal helyet
  * @param n elemek szama
  * @param dpArray double pointer
  */
-void allocateMemoryForArray2(int n, int** dpArray);
+void allocateMemoryForArray2(int n, int **dpArray);
 
-
-void readArray(int* pn, int** dpArray, const char* input);
-
+void readArray(int n, int **dpArray, const char *input);
 
 void printArray(int n, int *pArray, const char *output);
 
-
 void deallocateMemoryForArray(int **dpArray);
 
-#endif //FUNCTIONS_H
+#endif // FUNCTIONS_H
